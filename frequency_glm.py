@@ -44,3 +44,14 @@ print("Dispersion:", model.pearson_chi2 / model.df_resid)
 
 # 5. Relativities (what pricing teams actually read)
 print(np.exp(model.params).drop("Intercept").round(3))
+
+
+# --- paste the baseline code here ---
+null = smf.glm("ClaimNb ~ 1", data=train, family=sm.families.Poisson(),
+               offset=np.log(train["Exposure"])).fit()
+mu0 = null.predict(test, offset=np.log(test["Exposure"]))
+print("Baseline deviance:", mean_poisson_deviance(
+    test["ClaimNb"] / test["Exposure"], mu0 / test["Exposure"],
+    sample_weight=test["Exposure"]))
+
+print("Actual vs expected claims:", ...)   # existing lines continue below
