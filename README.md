@@ -28,9 +28,6 @@ pip install -r requirements.txt
 python frequency_glm.py
 ```
 
-## Next steps
-Severity GLM and pure premium, a LightGBM comparison, and a simple pricing API.
-
 ## Results
 - Test Poisson deviance (exposure-weighted): 0.598, against 0.627 for an intercept-only baseline, a reduction of about 4.7%.
 - Actual vs expected claims on the test set: 7,239 vs 7,172 (expected about 0.9% below actual, within random variation).
@@ -44,3 +41,6 @@ Severity GLM and pure premium, a LightGBM comparison, and a simple pricing API.
 - No interaction terms (for example between driver age and bonus-malus), and bands were chosen by hand.
 - Frequency only: no severity model, so no pure premium yet.
 - Public data is cleaner than a real portfolio.
+
+## Next steps
+Severity GLM and pure premium, a LightGBM comparison, and a simple pricing API.
