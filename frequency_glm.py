@@ -31,7 +31,7 @@ for f in factors:  # base level = level with most exposure
     base = train.groupby(f)["Exposure"].sum().idxmax()
     terms.append(f'C({f}, Treatment(reference="{base}"))')
 model = smf.glm("ClaimNb ~ " + " + ".join(terms), data=train,
-                family=sm.families.Poisson(), offset=np.log(train["Exposure"])).fit()
+                family=sm.families.Poisson(), offset=np.log(train["Exposure"])).fit(scale="X2")
 print(model.summary())
 
 # 4. Evaluate on the test set
